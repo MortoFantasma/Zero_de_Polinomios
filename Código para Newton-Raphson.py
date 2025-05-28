@@ -46,7 +46,6 @@ if __name__ == "__main__":
     raizes_reais = encontrar_raizes_newton(coefs)
     raizes_simbolicas = calcular_raizes_complexas(coefs)
 
-    # Imprimir raízes reais
     if raizes_reais:
         print("\nRaízes reais encontradas:")
         for r in raizes_reais:
@@ -54,7 +53,6 @@ if __name__ == "__main__":
     else:
         print("\nNenhuma raiz real encontrada.")
 
-    # Filtrar as complexas que já apareceram como reais
     raizes_complexas = []
     for raiz in raizes_simbolicas:
         valor = raiz.evalf()
