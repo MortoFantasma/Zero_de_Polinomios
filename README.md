@@ -74,8 +74,7 @@ O usuário deve inserir os coeficientes do polinômio **do maior grau até o ter
 
 1. Clone o repositório:
 
-bash
-git clone https://github.com/SEU-USUARIO/Zero-de-Polinomios.git
+clone: https://github.com/SEU-USUARIO/Zero-de-Polinomios.git
 
 2. Navegue até o diretório do repositório:
 cd Zero-de-Polinomios
