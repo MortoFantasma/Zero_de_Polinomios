@@ -1,18 +1,5 @@
-from itertools import product
+import cmath
 
-# Função para calcular divisores de um número (para raízes racionais)
-def divisores(n):
-    n = abs(n)
-    divs = set()
-    for i in range(1, int(n**0.5) + 1):
-        if n % i == 0:
-            divs.add(i)
-            divs.add(n // i)
-            divs.add(-i)
-            divs.add(-(n // i))
-    return list(divs)
-
-# Função para realizar a divisão de polinômio usando o método de Briot-Ruffini
 def ruffini(coefs, r):
     n = len(coefs)
     new_coefs = [coefs[0]]
@@ -21,70 +8,58 @@ def ruffini(coefs, r):
     resto = new_coefs.pop()
     return new_coefs, resto
 
-# Função para encontrar as raízes do polinômio
 def encontrar_zeros(coefs):
-    raizes = []
-    # Enquanto o grau do polinômio for maior que 2, tentamos encontrar raízes
+    coefs = [float(c) for c in coefs]
+    raizes_reais = []
+    raizes_complexas = []
+
     while len(coefs) > 3:
-        a0 = coefs[-1]
-        an = coefs[0]
-        
-        # Gerar as raízes possíveis com base nos divisores
-        candidatos = [p / q for p, q in product(divisores(a0), divisores(an))]
-        candidatos = list(set(candidatos))  # Remove duplicados
-        
         encontrou_raiz = False
-        for r in candidatos:
-            # Usar o método de Briot-Ruffini para testar a raiz
+        for r in range(-100, 101):
+            r = float(r)
             _, resto = ruffini(coefs, r)
-            if abs(resto) < 1e-6:  # Considera a raiz se o resto for praticamente zero
-                raizes.append(r)
-                coefs, _ = ruffini(coefs, r)  # Dividir o polinômio pelo binômio (x - r)
+            if abs(resto) < 1e-6:
+                raizes_reais.append(round(r, 6))
+                coefs, _ = ruffini(coefs, r)
                 encontrou_raiz = True
                 break
-
         if not encontrou_raiz:
-            print("Nenhuma raiz racional encontrada. Tentando outra estratégia.")
             break
 
-    # Resolver quadrática restante, se houver
     if len(coefs) == 3:
         a, b, c = coefs
         delta = b**2 - 4*a*c
-        if delta >= 0:
-            r1 = (-b + delta**0.5) / (2*a)
-            r2 = (-b - delta**0.5) / (2*a)
-            raizes.extend([r1, r2])
-        else:
-            print("Raízes complexas restantes:")  # Melhorando a mensagem
-            delta_complexo = complex(delta)**0.5
-            r1 = (-b + delta_complexo) / (2*a)
-            r2 = (-b - delta_complexo) / (2*a)
-            raizes.extend([r1, r2])
-            # Exibindo detalhes das raízes complexas
-            print(f"Raiz 1: {r1}")
-            print(f"Raiz 2: {r2}")
+        sqrt_delta = cmath.sqrt(delta)
+        r1 = (-b + sqrt_delta) / (2*a)
+        r2 = (-b - sqrt_delta) / (2*a)
+        for r in (r1, r2):
+            if abs(r.imag) < 1e-8:
+                raizes_reais.append(round(r.real, 6))
+            else:
+                raizes_complexas.append(r)
     elif len(coefs) == 2:
-        # grau 1: ax + b = 0
         a, b = coefs
-        raizes.append(-b / a)
+        r = -b / a
+        raizes_reais.append(round(r, 6))
 
-    # Caso não tenha raízes reais
-    if not raizes:
-        print("O polinômio não tem raízes reais.")
-    
-    # Arredondando as raízes complexas e reais para 2 casas decimais para exibição
-    return [round(r.real, 2) + round(r.imag, 2)*1j if isinstance(r, complex) else round(r, 2) for r in raizes]
+    return raizes_reais, raizes_complexas
 
 if __name__ == "__main__":
-    # Entrada de coeficientes
     entrada = input("Digite os coeficientes do polinômio (do maior grau até o termo independente), separados por espaço:\n")
     coefs = entrada.strip().split()
-    coefs = [float(c) for c in coefs]
-    
-    raizes = encontrar_zeros(coefs)
-    
-    # Exibir as raízes encontradas
-    print("Raízes encontradas:")
-    for r in raizes:
-        print(r)
+    reais, complexas = encontrar_zeros(coefs)
+
+    if reais:
+        print("\nRaízes reais encontradas:")
+        for r in reais:
+            print(f"{r:.6f}")
+    else:
+        print("\nNenhuma raiz real encontrada.")
+
+    if complexas:
+        print("\nRaízes complexas encontradas:")
+        for c in complexas:
+            parte_real = f"{c.real:.6f}"
+            parte_imag = f"{abs(c.imag):.6f}"
+            sinal = "+" if c.imag >= 0 else "-"
+            print(f"{parte_real} {sinal} {parte_imag}i")
