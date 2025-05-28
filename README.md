@@ -72,20 +72,26 @@ O usuário deve inserir os coeficientes do polinômio **do maior grau até o ter
 
 ## 📝 Como Rodar os Códigos
 
+Execute os códigos pelo seu editor preferido (ex: VSCode) ou utilize o CMD, PowerShell ou semelhante usando os códigos abaixo
+
+Lembrando que é necessário ter o python instalado.
+
 1. Clone o repositório:
 
-bash
-git clone https://github.com/SEU-USUARIO/Zero-de-Polinomios.git
+Se você tiver logado no GitHub, clone: https://github.com/MortoFantasma/Zero_de_Polinomios.git
 
-2. Navegue até o diretório do repositório:
-cd Zero-de-Polinomios
+Se não, apenas baixe os dois arquivos dos códigos e salve e uma mesma pasta.
+
+2. Navegue até o diretório do repositório (o local onde os dois códigos estão salvos):
+
+cd Zero-de-Polinomios 
 
 3. Execute os códigos em seu terminal:
 
-Para o Método de Newton-Raphson:
+Para o Método de Newton-Raphson: 
 python3 newton_raphson.py
 
-Para o Método de Briot-Ruffini:
+Para o Método de Briot-Ruffini: 
 python3 briot_ruffini.py
 
 4. Insira os coeficientes do polinômio quando solicitado.
