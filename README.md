@@ -30,7 +30,7 @@ Ele começa com um valor inicial \( x_0 \) e aplica a fórmula sucessivamente at
 O usuário deve inserir os coeficientes do polinômio **do maior grau até o termo independente**, separados por espaço.
 
 **Exemplo:**  
-`1 0 -5` → Representa \( x^2 - 5 \)
+`1 0 -5` → Representa \( x² - 5 \)
 
 #### 📤 Saída de Resultados
 
@@ -60,7 +60,7 @@ Este método é uma forma eficiente de dividir um polinômio por um fator conhec
 O usuário deve inserir os coeficientes do polinômio **do maior grau até o termo independente**, separados por espaço.
 
 **Exemplo:**  
-`1 -3 -4` → Representa \( x^2 - 3x - 4 \)
+`1 -3 -4` → Representa \( x² - 3x - 4 \)
 
 #### 📤 Saída de Resultados
 
