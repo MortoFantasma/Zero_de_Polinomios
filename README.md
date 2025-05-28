@@ -1,148 +1,92 @@
-📌 Cálculo de Zeros de Polinômios – Método de Newton Briot-Ruffini
-📚 Bibliotecas
-Este código utiliza a biblioteca cmath, que oferece suporte a números complexos. Ela é necessária para calcular raízes quando o discriminante (Δ) é negativo.
+# Cálculo de Zeros de Polinômios
 
-cmath.sqrt(): usada para obter a raiz quadrada de números negativos (resultando em números complexos).
+## 🧠 Métodos Utilizados
 
-O restante do código utiliza apenas recursos nativos do Python (sem bibliotecas externas como sympy ou numpy).
+### Método de Newton-Raphson
 
-🧠 Método de Briot-Ruffini
-Este método é uma forma eficiente de dividir um polinômio por uma raiz conhecida. Ele também auxilia na identificação de raízes reais inteiras do polinômio por tentativa e erro (método direto).
+Este método aproxima raízes reais de uma função \( f(x) \) utilizando a fórmula iterativa:
 
-⚙️ Funções do Código
-ruffini(coefs, r): divide o polinômio pelos fatores (x - r) usando o esquema de Briot-Ruffini.
+\[
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+\]
 
-encontrar_zeros(coefs): tenta encontrar raízes reais inteiras por substituição sucessiva. Quando restam apenas três ou dois coeficientes, aplica a fórmula de Bhaskara ou resolução direta.
+Ele começa com um valor inicial \( x_0 \) e aplica a fórmula sucessivamente até encontrar uma raiz ou atingir o número máximo de iterações.
 
-💬 Entrada de Dados
-O usuário deve digitar os coeficientes do polinômio do maior grau até o termo independente, separados por espaço.
+#### 📚 Bibliotecas
 
-Exemplo:
-1 -3 -4 → representa o polinômio 
-𝑥
-2
-−
-3
-𝑥
-−
-4
-x 
-2
- −3x−4
+- **`sympy`**: Para manipulação simbólica de expressões matemáticas.
+- **`numpy`**: Para facilitar operações numéricas com arrays.
 
-📤 Saída de Resultados
-As raízes reais encontradas são exibidas com 6 casas decimais.
+#### ⚙️ Funções do Código
 
-As raízes complexas (quando o discriminante é negativo) são apresentadas no formato:
+1. **Cálculo do polinômio** a partir dos coeficientes fornecidos.
+2. **Cálculo da derivada simbólica** do polinômio com `sympy`.
+3. **Iterações do Método de Newton-Raphson** aplicadas a múltiplos pontos iniciais.
+4. **Filtragem de raízes reais** e exibição com até 6 casas decimais.
+5. Caso não haja raízes reais, o código calcula as **raízes complexas**.
 
-css
-Copiar
-Editar
-parte_real ± parte_imaginaria*i
-📌 Cálculo de Zeros de Polinômios – Método de Newton-Raphson
-📚 Bibliotecas
-O código usa duas bibliotecas:
+#### 💬 Entrada de Dados
 
-sympy: para manipulação simbólica de expressões matemáticas. Utilizada para:
+O usuário deve inserir os coeficientes do polinômio **do maior grau até o termo independente**, separados por espaço.
 
-Construir o polinômio a partir dos coeficientes.
+**Exemplo:**  
+`1 0 -5` → Representa \( x^2 - 5 \)
 
-Calcular a derivada automaticamente.
+#### 📤 Saída de Resultados
 
-Resolver o polinômio simbolicamente (inclusive com raízes complexas).
+- Exibe as **raízes reais** encontradas.
+- Caso não haja raízes reais, o código exibe as **raízes complexas** no formato: parte_real ± parte_imaginaria*i
 
-Exibir as raízes em formato algébrico.
 
-numpy: para facilitar operações numéricas, como:
+---
 
-Criar um conjunto de valores iniciais para aplicar o método.
+### Método de Briot-Ruffini
 
-Trabalhar com arrays e cálculos numéricos vetorizados.
+Este método é uma forma eficiente de dividir um polinômio por um fator conhecido (raiz) usando o esquema de Briot-Ruffini.
 
-🧠 Método de Newton-Raphson
-Esse método aproxima as raízes reais de uma função 
-𝑓
-(
-𝑥
-)
-f(x) utilizando a fórmula iterativa:
+#### 📚 Bibliotecas
 
-𝑥
-𝑛
-+
-1
-=
-𝑥
-𝑛
-−
-𝑓
-(
-𝑥
-𝑛
-)
-𝑓
-′
-(
-𝑥
-𝑛
-)
-x 
-n+1
-​
- =x 
-n
-​
- − 
-f 
-′
- (x 
-n
-​
- )
-f(x 
-n
-​
- )
-​
- 
-A partir de um valor inicial 
-𝑥
-0
-x 
-0
-​
- , a fórmula é aplicada repetidamente até atingir a convergência ou um limite de iterações.
+- **`cmath`**: Para manipulação de números complexos e cálculo da raiz quadrada de números negativos.
 
-⚙️ Funções do Código
-Geração do polinômio a partir dos coeficientes digitados.
+#### ⚙️ Funções do Código
 
-Cálculo da derivada simbólica com sympy.
+1. **Divisão do polinômio** pelos fatores \( (x - r) \) usando o método de Briot-Ruffini.
+2. **Encontrar raízes reais inteiras** por tentativa e erro.
+3. **Resolução direta** com a fórmula de Bhaskara para polinômios quadráticos.
+4. Caso não sejam encontradas raízes reais, o código calcula as **raízes complexas**.
 
-Iterações do método de Newton-Raphson para múltiplos pontos iniciais.
+#### 💬 Entrada de Dados
 
-Filtragem de raízes únicas, evitando repetições ou aproximações redundantes.
+O usuário deve inserir os coeficientes do polinômio **do maior grau até o termo independente**, separados por espaço.
 
-Se não forem encontradas raízes reais, o código recorre à solução simbólica com sympy.solve().
+**Exemplo:**  
+`1 -3 -4` → Representa \( x^2 - 3x - 4 \)
 
-💬 Entrada de Dados
-O usuário insere os coeficientes do polinômio, separados por espaço.
+#### 📤 Saída de Resultados
 
-Exemplo:
-1 0 -5 → representa 
-𝑥
-2
-−
-5
-x 
-2
- −5
+- Exibe as **raízes reais** encontradas.
+- Exibe as **raízes complexas** se o discriminante for negativo, no formato: parte_real ± parte_imaginaria*i
 
-📤 Saída de Resultados
-Raízes reais encontradas numericamente são exibidas com 6 casas decimais.
 
-Quando não houver raízes reais, o código calcula e exibe as raízes complexas com sympy, no formato:
+---
 
-css
-Copiar
-Editar
-parte_real ± parte_imaginaria*i
+## 📝 Como Rodar os Códigos
+
+1. Clone o repositório:
+
+bash
+git clone https://github.com/SEU-USUARIO/Zero-de-Polinomios.git
+
+2. Navegue até o diretório do repositório:
+cd Zero-de-Polinomios
+
+3. Execute os códigos em seu terminal:
+
+Para o Método de Newton-Raphson:
+python3 newton_raphson.py
+
+Para o Método de Briot-Ruffini:
+python3 briot_ruffini.py
+
+4. Insira os coeficientes do polinômio quando solicitado.
+
