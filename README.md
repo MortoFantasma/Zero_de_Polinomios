@@ -81,12 +81,10 @@ cd Zero-de-Polinomios
 
 3. Execute os códigos em seu terminal:
 
-Para o Método de Newton-Raphson:
-
+Para o Método de Newton-Raphson: 
 python3 newton_raphson.py
 
-Para o Método de Briot-Ruffini:
-
+Para o Método de Briot-Ruffini: 
 python3 briot_ruffini.py
 
 4. Insira os coeficientes do polinômio quando solicitado.
