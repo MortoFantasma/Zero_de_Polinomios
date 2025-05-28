@@ -74,6 +74,8 @@ O usuário deve inserir os coeficientes do polinômio **do maior grau até o ter
 
 Lembrando que é necessário ter python instalado.
 
+Execute os códigos pelo seu editor preferido (ex: VSCode) ou utilize o CMD, PowerShell ou semelhante usando os códigos abaixo
+
 1. Clone o repositório:
 
 Se você tiver logado no GitHub, clone: https://github.com/MortoFantasma/Zero_de_Polinomios.git
