@@ -72,9 +72,9 @@ O usuário deve inserir os coeficientes do polinômio **do maior grau até o ter
 
 ## 📝 Como Rodar os Códigos
 
-Lembrando que é necessário ter python instalado.
-
 Execute os códigos pelo seu editor preferido (ex: VSCode) ou utilize o CMD, PowerShell ou semelhante usando os códigos abaixo
+
+Lembrando que é necessário ter o python instalado.
 
 1. Clone o repositório:
 
