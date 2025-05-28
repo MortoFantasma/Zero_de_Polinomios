@@ -1,39 +1,24 @@
-# Zero de Polinômios
-
-# 📌 Cálculo de Zeros de Polinômios – Método de Newton Briot-Ruffini
+📌 Cálculo de Zeros de Polinômios – Método de Newton Briot-Ruffini
 📚 Bibliotecas
-O código importa a biblioteca cmath, que oferece suporte ao cálculo com números complexos. Ela é essencial para resolver raízes quadráticas com discriminante negativo, fornecendo o resultado corretamente com parte imaginária.
+Este código utiliza a biblioteca cmath, que oferece suporte a números complexos. Ela é necessária para calcular raízes quando o discriminante (Δ) é negativo.
 
-cmath.sqrt() é usada para calcular a raiz quadrada mesmo quando o valor do discriminante (Δ) é negativo.
+cmath.sqrt(): usada para obter a raiz quadrada de números negativos (resultando em números complexos).
 
-O restante do código é implementado com funções nativas do Python, sem uso de bibliotecas externas adicionais.
+O restante do código utiliza apenas recursos nativos do Python (sem bibliotecas externas como sympy ou numpy).
 
-⚙️ Função ruffini
-A função ruffini implementa a divisão sintética de polinômios, permitindo dividir um polinômio 
-𝑃
-(
-𝑥
-)
-P(x) por 
-(
-𝑥
-−
-𝑟
-)
-(x−r), onde 
-𝑟
-r é uma raiz candidata. Ela retorna os novos coeficientes do quociente e o resto da divisão.
+🧠 Método de Briot-Ruffini
+Este método é uma forma eficiente de dividir um polinômio por uma raiz conhecida. Ele também auxilia na identificação de raízes reais inteiras do polinômio por tentativa e erro (método direto).
 
-🧮 Função encontrar_zeros
-Recebe os coeficientes do polinômio e utiliza tentativas de raízes reais 
-𝑟
-r entre -100 e 100. Se o resto da divisão for próximo de zero, o valor é considerado uma raiz real. Quando restam apenas dois ou três coeficientes, a equação de 1º ou 2º grau é resolvida diretamente (inclusive para raízes complexas).
+⚙️ Funções do Código
+ruffini(coefs, r): divide o polinômio pelos fatores (x - r) usando o esquema de Briot-Ruffini.
 
-📥 Entrada de Dados
-O usuário deve fornecer os coeficientes do polinômio, do maior grau até o termo independente, separados por espaços.
+encontrar_zeros(coefs): tenta encontrar raízes reais inteiras por substituição sucessiva. Quando restam apenas três ou dois coeficientes, aplica a fórmula de Bhaskara ou resolução direta.
 
-📌 Exemplo:
-1 -3 -4 (representa 
+💬 Entrada de Dados
+O usuário deve digitar os coeficientes do polinômio do maior grau até o termo independente, separados por espaço.
+
+Exemplo:
+1 -3 -4 → representa o polinômio 
 𝑥
 2
 −
@@ -43,42 +28,44 @@ O usuário deve fornecer os coeficientes do polinômio, do maior grau até o ter
 4
 x 
 2
- −3x−4)
+ −3x−4
 
-🖨️ Saída
-O código imprime:
+📤 Saída de Resultados
+As raízes reais encontradas são exibidas com 6 casas decimais.
 
-Raízes reais encontradas (com 6 casas decimais).
+As raízes complexas (quando o discriminante é negativo) são apresentadas no formato:
 
-Raízes complexas, formatadas como parte_real ± parte_imaginária i.
-
-# 📌 Cálculo de Zeros de Polinômios – Método de Newton-Raphson
+css
+Copiar
+Editar
+parte_real ± parte_imaginaria*i
+📌 Cálculo de Zeros de Polinômios – Método de Newton-Raphson
 📚 Bibliotecas
-Este código utiliza duas bibliotecas principais:
+O código usa duas bibliotecas:
 
-sympy: Permite manipulação simbólica de expressões matemáticas. É usada para:
+sympy: para manipulação simbólica de expressões matemáticas. Utilizada para:
 
-Montar o polinômio a partir dos coeficientes.
+Construir o polinômio a partir dos coeficientes.
 
-Calcular a derivada simbólica de forma automática.
+Calcular a derivada automaticamente.
 
-Resolver o polinômio simbolicamente para encontrar as raízes (inclusive complexas).
+Resolver o polinômio simbolicamente (inclusive com raízes complexas).
 
-Representar resultados em formato algébrico.
+Exibir as raízes em formato algébrico.
 
-numpy: Utilizada para:
+numpy: para facilitar operações numéricas, como:
 
-Gerar um conjunto de pontos iniciais para aplicar o método de Newton-Raphson (ex: np.linspace(-10, 10, 20)).
+Criar um conjunto de valores iniciais para aplicar o método.
 
-Facilitar operações numéricas com arrays.
+Trabalhar com arrays e cálculos numéricos vetorizados.
 
 🧠 Método de Newton-Raphson
-Este método aproxima raízes reais de uma função 
+Esse método aproxima as raízes reais de uma função 
 𝑓
 (
 𝑥
 )
-f(x) usando iterações sucessivas com a fórmula:
+f(x) utilizando a fórmula iterativa:
 
 𝑥
 𝑛
@@ -118,32 +105,44 @@ n
  )
 ​
  
-⚙️ Função Principal
-Calcula a derivada simbólica do polinômio.
+A partir de um valor inicial 
+𝑥
+0
+x 
+0
+​
+ , a fórmula é aplicada repetidamente até atingir a convergência ou um limite de iterações.
 
-Testa diversos pontos iniciais no intervalo [-10, 10] para tentar encontrar diferentes raízes reais.
+⚙️ Funções do Código
+Geração do polinômio a partir dos coeficientes digitados.
 
-Armazena e exibe apenas raízes distintas (sem repetições visuais).
+Cálculo da derivada simbólica com sympy.
 
-💡 Tratamento de Complexas
-Mesmo quando o método não encontra raízes reais, o código usa sympy.solve() para calcular e exibir as raízes complexas de forma simbólica, garantindo sempre uma resposta.
+Iterações do método de Newton-Raphson para múltiplos pontos iniciais.
 
-📥 Entrada de Dados
-O usuário fornece os coeficientes do polinômio como uma única linha com números separados por espaço.
+Filtragem de raízes únicas, evitando repetições ou aproximações redundantes.
 
-📌 Exemplo:
-1 0 -4 (representa 
+Se não forem encontradas raízes reais, o código recorre à solução simbólica com sympy.solve().
+
+💬 Entrada de Dados
+O usuário insere os coeficientes do polinômio, separados por espaço.
+
+Exemplo:
+1 0 -5 → representa 
 𝑥
 2
 −
-4
+5
 x 
 2
- −4)
+ −5
 
-🖨️ Saída
-Raízes reais aproximadas, com 6 casas decimais.
+📤 Saída de Resultados
+Raízes reais encontradas numericamente são exibidas com 6 casas decimais.
 
-Raízes complexas exibidas simbolicamente, no formato parte_real ± parte_imaginária * i.
+Quando não houver raízes reais, o código calcula e exibe as raízes complexas com sympy, no formato:
 
-Mensagem amigável caso nenhuma raiz real seja encontrada.
+css
+Copiar
+Editar
+parte_real ± parte_imaginaria*i
