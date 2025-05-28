@@ -1,6 +1,6 @@
 # Zero de Polinômios
 
-📌 Cálculo de Zeros de Polinômios – Método de Newton Briot-Ruffini
+# 📌 Cálculo de Zeros de Polinômios – Método de Newton Briot-Ruffini
 📚 Bibliotecas
 O código importa a biblioteca cmath, que oferece suporte ao cálculo com números complexos. Ela é essencial para resolver raízes quadráticas com discriminante negativo, fornecendo o resultado corretamente com parte imaginária.
 
@@ -52,7 +52,7 @@ Raízes reais encontradas (com 6 casas decimais).
 
 Raízes complexas, formatadas como parte_real ± parte_imaginária i.
 
-📌 Cálculo de Zeros de Polinômios – Método de Newton-Raphson
+# 📌 Cálculo de Zeros de Polinômios – Método de Newton-Raphson
 📚 Bibliotecas
 Este código utiliza duas bibliotecas principais:
 
