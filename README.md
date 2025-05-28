@@ -72,12 +72,17 @@ O usuário deve inserir os coeficientes do polinômio **do maior grau até o ter
 
 ## 📝 Como Rodar os Códigos
 
+Lembrando que é necessário ter python instalado.
+
 1. Clone o repositório:
 
-clone: https://github.com/SEU-USUARIO/Zero-de-Polinomios.git
+Se você tiver logado no GitHub, clone: https://github.com/SEU-USUARIO/Zero-de-Polinomios.git
 
-2. Navegue até o diretório do repositório:
-cd Zero-de-Polinomios
+Se não, apenas baixe os dois arquivos dos códigos e salve e uma mesma pasta.
+
+2. Navegue até o diretório do repositório (o local onde os dois códigos estão salvos):
+
+cd Zero-de-Polinomios 
 
 3. Execute os códigos em seu terminal:
 
