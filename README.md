@@ -76,7 +76,7 @@ Lembrando que é necessário ter python instalado.
 
 1. Clone o repositório:
 
-Se você tiver logado no GitHub, clone: https://github.com/SEU-USUARIO/Zero-de-Polinomios.git
+Se você tiver logado no GitHub, clone: https://github.com/MortoFantasma/Zero_de_Polinomios.git
 
 Se não, apenas baixe os dois arquivos dos códigos e salve e uma mesma pasta.
 
