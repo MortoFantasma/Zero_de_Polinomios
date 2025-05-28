@@ -6,9 +6,9 @@
 
 Este método aproxima raízes reais de uma função \( f(x) \) utilizando a fórmula iterativa:
 
-\[
+$$
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
-\]
+$$
 
 Ele começa com um valor inicial \( x_0 \) e aplica a fórmula sucessivamente até encontrar uma raiz ou atingir o número máximo de iterações.
 
